@@ -1,0 +1,21 @@
+body {
+  padding-top: 80px;
+}
+
+button {
+  background-color: transparent;
+}
+
+.submit-post {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.input-sm {
+  width: 100%;
+}
+
+.caption {
+  font-size: 24px;
+  font-style: bold;
+}

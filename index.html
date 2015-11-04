@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
   <title></title>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body>
+<body ng-controller="Controller">
+
+  <nav style="height: 50px" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="navbar-brand">Reddit Clone</div>
+        <button ng-click="submitPost = !submitPost" class="btn navbar-btn pull-left"><span class="glyphicon glyphicon-plus"></span> Submit Post</button>
+        <form class="navbar-form pull-left" role="search">
+          <input type="text" class="form-control" placeholder="Search">
+        </form>
+         <!--  <button type="button" class="btn navbar-btn navbar-toggle collapsed" data-toggle="collapse" data-target="dd">Sort By Votes <span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+            <li><a role="menuitem" href="#">Ascending</a></li>
+            <li><a role="menuitem" href="#">Descending</a></li>
+          </ul> -->
+        <div class="navbar-dropdown pull-left">
+          <button class="btn navbar-btn dropdown-toggle pull-left" type="button" data-toggle="dropdown">Dropdown Example
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a href="#">votes</a></li>
+            <li><a href="#">date</a></li>
+            <li><a href="#">title</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="submit-post container-fluid">
+    <form ng-show="submitPost" role="form">
+      <div class="form-group">
+        <div calss="caption" style="font-size:24px; padding-bottom:8px;">Title</div>
+        <input ng-model="post.title" class="form control input-sm" ng-model="title" type="text" placeholder="Title">
+        <div class="caption" style="font-size:24px; padding-bottom:8px;">Author</div>
+        <input ng-model="post.author" class="form control input-sm" ng-model="Author" type="text" placeholder="Author">
+        <div class="caption" style="font-size:24px; padding-bottom:8px;">Image URL</div>
+        <input ng-model="post.url" class="form control input-sm" ng-model="Image URL" type="text" placeholder="Image URL">
+        <div class="caption" style="font-size:24px; padding-bottom:8px;">Description</div>
+        <input ng-model="post.description" class="form control input-sm" ng-model="Description" type="text" placeholder="Description">
+      </div>
+      <button ng-click="submitForm(post)" type="submit" class="btn btn-default">Submit Post</button>
+    </form>
+  </div>
+
+  <div class="posts container-fluid">
+    <div ng-repeat="elem in postsData track by $index">
+      {{elem.title}}
+      {{elem.url}}
+      {{elem.author}}
+      {{elem.description}}
+    </div>
+  </div>
 
 
-  <script type="text/javascript" src="script.js"></script>
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
