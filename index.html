@@ -24,7 +24,7 @@
             <li><a role="menuitem" href="#">Descending</a></li>
           </ul> -->
         <div class="navbar-dropdown pull-left">
-          <button class="btn navbar-btn dropdown-toggle pull-left" type="button" data-toggle="dropdown">Dropdown Example
+          <button class="btn navbar-btn dropdown-toggle pull-left" type="button" data-toggle="dropdown">Sort By
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href="#">votes</a></li>
@@ -39,13 +39,13 @@
   <div class="submit-post container-fluid">
     <form ng-show="submitPost" role="form">
       <div class="form-group">
-        <div calss="caption" style="font-size:24px; padding-bottom:8px;">Title</div>
+        <div class="caption">Title</div>
         <input ng-model="post.title" class="form control input-sm" ng-model="title" type="text" placeholder="Title">
-        <div class="caption" style="font-size:24px; padding-bottom:8px;">Author</div>
+        <div class="caption">Author</div>
         <input ng-model="post.author" class="form control input-sm" ng-model="Author" type="text" placeholder="Author">
-        <div class="caption" style="font-size:24px; padding-bottom:8px;">Image URL</div>
+        <div class="caption">Image URL</div>
         <input ng-model="post.url" class="form control input-sm" ng-model="Image URL" type="text" placeholder="Image URL">
-        <div class="caption" style="font-size:24px; padding-bottom:8px;">Description</div>
+        <div class="caption">Description</div>
         <input ng-model="post.description" class="form control input-sm" ng-model="Description" type="text" placeholder="Description">
       </div>
       <button ng-click="submitForm(post)" type="submit" class="btn btn-default">Submit Post</button>
@@ -54,10 +54,16 @@
 
   <div class="posts container-fluid">
     <div ng-repeat="elem in postsData track by $index">
-      {{elem.title}}
-      {{elem.url}}
-      {{elem.author}}
-      {{elem.description}}
+      <div class="row">
+          <div class="url col-xs-3"><img class="post-img" src="{{elem.url}}"></div>
+          <div class="info-container col-xs-9">
+            <div class="title">{{elem.title}} | <span class="glyphicon glyphicon-arrow-up"></span> <span class="glyphicon glyphicon-arrow-down"></span></div>
+            <div class="author">By {{elem.author}}</div>
+            <div class="description">{{elem.description}}</div>
+            <div class="footer"><span class="glyphicon glyphicon-calendar"></span> Date | <span class="glyphicon glyphicon-comment"></span> Comments | <span class="glyphicon glyphicon-pencil"></span> Add Comment</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
