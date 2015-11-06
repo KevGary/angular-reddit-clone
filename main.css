@@ -3,12 +3,16 @@ body {
 }
 
 button {
-  background-color: transparent;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .submit-post, .posts {
   margin-left: 5%;
   margin-right: 5%;
+  margin-top: 12px;
 }
 
 .input-sm {
@@ -71,4 +75,41 @@ button {
 .footer {
   height: 24px;
   padding-bottom: 0px;
+}
+
+.up-vote, .down-vote {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.bgred {
+  background-color: red;
+}
+
+.submit {
+  margin-top: 12px;
+}
+
+.comments-box {
+  background-color: #F0F0F0;
+  margin-top: 0;
+  width: 100%;
+ /* margin-left: 0;
+  margin-right: 0;*/
+}
+
+.row-margin {
+  height: 96px;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
