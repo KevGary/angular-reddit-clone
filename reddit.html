@@ -27,7 +27,7 @@
           </li>
           <li>
             <form class="navbar-form pull-left" role="search">
-              <input type="text" class="form-control" placeholder="Search">
+              <input ng-model="search" type="text" class="form-control" placeholder="Search">
             </form>
           </li>
           <li class="dropdown">
@@ -61,7 +61,7 @@
   </div>
 
   <div class="posts container">
-    <div ng-repeat="elem in postsData | orderBy: sort">
+    <div ng-repeat="elem in postsData | orderBy: sort | filter: search">
       <div class="row posts-row">
         <div class="url col-xs-3"><img class="post-img" src="{{elem.url}}"></div>
         <div class="info-container col-xs-9">
