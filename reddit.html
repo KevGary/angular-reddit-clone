@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body ng-controller="Controller">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" href="#">Reddit Clone</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li>
+            <button ng-click="submitPost = !submitPost" class="submit-btn btn navbar-btn pull-left"><span class="glyphicon glyphicon-plus"></span> Submit Post</button>
+          </li>
+          <li>
+            <form class="navbar-form pull-left" role="search">
+              <input type="text" class="form-control" placeholder="Search">
+            </form>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sort By 
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ng-click="sort='-votes'"><a ng-click="sortType('votes')" href="#">votes</a></li>
+              <li ng-click="sort='-date'"><a href="#">date</a></li>
+              <li ng-click="sort='title'"><a href="#">title</a></li> 
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="submit-post container-fluid">
+    <form name="submissionForm" ng-show="submitPost" role="form" novalidate>
+      <div class="caption">Title</div>
+      <input ng-model="post.title" class="title-input form-control input-sm" required type="text" placeholder="Title">
+      <div class="caption">Author</div>
+      <input ng-model="post.author" class="author-input form-control input-sm" type="text" required placeholder="Author">
+      <div class="caption">Image URL</div>
+      <input ng-model="post.url" class="url-input form-control input-sm" type="url" required placeholder="Image URL">
+      <div class="caption">Description</div>
+      <input ng-model="post.description" class="description-input form-control input-sm" required type="text" placeholder="Description">
+      <div ng-model="post.votes"></div>
+      <div ng-model="post.comments"></div>
+      <button ng-disabled="submissionForm.$invalid" ng-click="submitForm(post)" type="submit" class="submit-post-btn submit btn btn-default">Submit Post</button>
+    </form>
+  </div>
+
+  <div class="posts container">
+    <div ng-repeat="elem in postsData | orderBy: sort">
+      <div class="row posts-row">
+        <div class="url col-xs-3"><img class="post-img" src="{{elem.url}}"></div>
+        <div class="info-container col-xs-9">
+          <div class="title">{{elem.title}} | <button ng-click="upVote()" class="up-vote"><span class="glyphicon glyphicon-arrow-up"></span></button> <button ng-click="downVote()" class="down-vote"><span class="glyphicon glyphicon-arrow-down"></span></button> <span class="votes" ng-class="{red: elem.votes < 0, green: elem.votes > 0}">{{elem.votes}}</span></div>
+          <div class="author">By {{elem.author}}</div>
+          <div class="description">{{elem.description}}</div>
+          <div class="footer"><span class="glyphicon glyphicon-calendar"></span> {{elem.timeSubmitted}} | <button ng-click="showComments = !showComments" class="comments"><span class="glyphicon glyphicon-comment"></span> Comments</button> | <button class="add-comment" ng-click="addComment = !addComment"><span class="glyphicon glyphicon-pencil"></span> Add Comment</button></div>
+        </div>
+        <div class="row">
+          <div class="comments-section col-xs-12" ng-controller="Comments-Controller">
+            <div class="add-comment-show" ng-show="addComment">
+              <form name="commentForm" role="form" novalidate>
+                <input ng-model="comment.name" class="comment-name-input form control input-sm" required type="text" placeholder="Name">
+                <input ng-model="comment.content" class="comment-content-input input-sm" required type="text" placeholder="Content">
+                <button ng-disabled="commentForm.$invalid" ng-click="submitComment(comment)" type="submit" class="submit btn btn-default">Comment</button>
+              </form>
+            </div>
+            <div class="comments-show" ng-show="showComments">
+              <div ng-repeat="comm in commentsData">
+                <ul class="comments-list">
+                  <li><span class="comm-name">{{comm.name}}</span>: {{comm.content}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.10.6/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

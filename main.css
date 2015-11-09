@@ -2,14 +2,14 @@ body {
   padding-top: 80px;
 }
 
-button {
+/*.comments, .add-comment {
   padding: 0;
   border: none;
   background: none;
   outline: none;
-}
+}*/
 
-.submit-post, .posts {
+.submit-post {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 12px;
@@ -22,16 +22,19 @@ button {
 .caption {
   font-size: 24px;
   font-style: bold;
-  padding-top: 12px;
-  padding-bottom: 6px;
+  margin-top: 12px;
+  margin-bottom: 6px;
 }
 
-.row {
+.submit-post-btn {
+  margin-top: 12px;
+}
+
+.posts-row {
   background-color: #F0F0F0;
-  height: 192px;
   padding-top: 16px;
   padding-bottom: 16px;
-  margin-top: 16px;
+  margin-top: 3%;
 }
 
 .url {
@@ -46,6 +49,16 @@ button {
   height: 100%; 
 }
 
+.comments-show, .add-comment-show {
+  height: 100px;
+}
+
+.url {
+  overflow: hidden;
+  background-size: fill;
+  background-repeat: no-repeat;
+  height: 100%;
+}
 .title {
   height: 36px;
   font-size: 28px;
@@ -71,7 +84,32 @@ button {
   height: 100%;
 }
 
+.up-vote, .down-vote, .add-comment, .comments {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
 
+.footer {
+  height: 24px;
+  padding-bottom: 0px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.bgred {
+  background-color: red;
+}
+
+
+/*
 .footer {
   height: 24px;
   padding-bottom: 0px;
@@ -100,16 +138,14 @@ button {
   margin-top: 12px;
 }
 
-.comments-box {
+.add-comment-show, .comments-show {
   background-color: #F0F0F0;
-  margin-top: 0;
+  display: inline-block;
+  height: 100px;
   width: 100%;
- /* margin-left: 0;
-  margin-right: 0;*/
 }
 
-.row-margin {
-  height: 96px;
-  margin-bottom: 0px;
-  margin-top: 0px;
+.comm-name {
+  font-style: bold;
 }
+*/
